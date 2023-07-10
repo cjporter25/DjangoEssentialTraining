@@ -1,0 +1,34 @@
+**Starting Your Django Project**
+1.1 Creating a new Django Project
+    - While in the folder you'd like the project to be, use the command:
+      "django-admin startproject [project-name] ."
+      - Here, the "project-name" is what I'd like to call the main folder. the
+        "." tells the django command to create this project in the current folder.
+    - Once a project has been added, running the "manage.py" file will execute
+      the project files. In the case of this project, the command looks like:
+      C:/Python310/python.exe 
+      "c:/Users/Christopher Porter/Desktop/DjangoEssentialTraining/manage.py"
+      runserver
+1.2 Minimum working page
+    - When developing a project, it's important to compartmentalize unique elements
+      into separate components called "apps". 
+        - To add an app, use the command:
+        "django-admin startapp [app-name]"
+        - Here, the "app-name" is what I'd like to call subsequent apps within the
+          project. Once executed, a new folder called "app-name" will appear in the DIR
+    - Once an app is added, remember to add the app folder's name to the list of
+      INSTALLED_APPS in settings.py.
+    - Apps can output information to a webpage by receiving a request, and outputting an
+      HttpResponse.
+        - In the python file where this is processed, be sure to add the proper import:
+        "from django.http import HttpResponse"
+        - This feature would be used in default "views.py" file of an app.
+    - Once the app view has a routing function created, the "urls.py" in the main project
+      folder should include an import statement referencing that views.py file, as well 
+      as a formal "path" statement inside the "urlpatterns" list.
+1.2.1 MVT or Model|View|Template Framework
+    - Views are responsible for handling requests and responses
+1.3 Creating your First Django Template
+    - In an app, you can create a template folder containing html files. These files
+      are then passed through the background Django Template Language mechanisms such
+      that data can be passed into variables located in the HTML.

@@ -17,6 +17,5 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-WtfDidIDo.txt
 smartnotes/settings.py
 settings.py
