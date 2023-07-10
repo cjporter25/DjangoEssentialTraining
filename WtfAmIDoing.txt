@@ -32,3 +32,11 @@
     - In an app, you can create a template folder containing html files. These files
       are then passed through the background Django Template Language mechanisms such
       that data can be passed into variables located in the HTML.
+1.4 Django apps and the Concept of Modularization
+    - So, literally ignore how it was done previously. By importing the home view
+      into the urls.py of "smartnotes", we create a dependency (not very cash money).
+        - Instead, a urls.py file will be create directly inside the home DIR. The 
+          required functions will look similar to how they looked in the main urls.py
+    - In the main project folder's urls.py (smartnotes), instead of referencing 
+      the view file in "home" directly, we simply "include" a reference of the file 
+      path to a "urls.py" inside home (which then routes to the home's view)
