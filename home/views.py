@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -15,3 +16,10 @@ def home(request):
     #   like. The target template must include a variable that can recieve
     #   this input
     return render(request, 'home/welcome.html', {'today': datetime.today()})
+
+@login_required(login_url='/admin')
+def authorized(request):
+    # This function is similar to the above "home" function that renders and
+    #   returns the welcome.html page. 
+    # This function instead returns the authorized.html page.
+    return render(request, 'home/authorized.html', {})
