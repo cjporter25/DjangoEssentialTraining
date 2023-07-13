@@ -64,3 +64,30 @@
           this user, select the box next to it, and in the "Action" drop down menu,
           choose "delete selected users". The home page shows a list of recent actions
           and should include a statement about the deleted user.
+2.3 User Authentication 
+    - So, even if someone attempts to access the admin page, we need a way to 
+      prevent unauthorized access.
+        - To do this, we created another HTML view inside the "home" templates folder.
+          This view contains a basic statement saying the user doesn't have access.
+        - To obtain this response and have the webpage tell the user this is the case,
+          there are three things we need to do.
+            - Create a function, similar to home, in the views.py file, indicating 
+              an HTTP request and response pipeline for the newly created 
+              "authorized.html" file.
+            - Within the views.py file, we need to import an already provided module
+              to decorate the potentially required error message. 
+                - "from django.contrib.auth.decorators import login_required". Once 
+                  imported, simply add the decorator tag "@login_required" above the
+                  new function.
+            - Lastly, we need to add the correct pipeline path inside the urls.py 
+              file in the same parent folder.
+        - Django will automatically check for whether a user is signed in. If so,
+          the redirect will occur correctly. If a user logged out, then trying to
+          access the authorized template will result in an error.
+    - Establishing Good Flow - "Prompting a user to sign-in" when attempting to
+      access a restricted area.
+        - To do this in Django, all we need to do is add a perameter to the
+          "@login_required" decorator inside views.py.
+            - So instead of "@login_required" it would be "@login_required(login_url='/admin')"
+            - By doing this, Django will automatically redirect the session to the login page,
+              which is by default setup as the "admin" endpoint or localhost:8000/admin.
