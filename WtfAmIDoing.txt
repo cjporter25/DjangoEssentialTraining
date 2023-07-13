@@ -54,4 +54,13 @@
         - "python manage.py createsuperuser". It will then ask for what username, 
           e-mail, and password you'd like.
 2.2 Django Admin: Easily Visualizing and Creating data
-    - 
+    - Once an admin is created, running the server again and use the admin specific
+      URL to access the login page. Login with the default login setup earlier.
+        - "Groups" & "Users" are both data tables. By opening "Users" we should see
+          the "admin" user already present in the list.
+        - To add a new user, click the "ADD USER +" button in the top right. type
+          in the preferred username and password, then click "SAVE".
+        - This new user should now be present in the "Users" data table. To delete
+          this user, select the box next to it, and in the "Action" drop down menu,
+          choose "delete selected users". The home page shows a list of recent actions
+          and should include a statement about the deleted user.
