@@ -40,3 +40,18 @@
     - In the main project folder's urls.py (smartnotes), instead of referencing 
       the view file in "home" directly, we simply "include" a reference of the file 
       path to a "urls.py" inside home (which then routes to the home's view)
+
+**Django Built-In User Management**
+2.1 Create users in Django
+    - When running a project locally, in my case, I would type in "localhost:8000"
+      followed by whatever view I'm trying to reach, i.e., "localhost:8000/home".
+        - By typing in "localhost:8000/admin" we'll automatically see a page that 
+          prompts the user for a username and password.
+    - We can initiate the admin creation process by using the command ->
+        - "python manage.py migrate". This will automatically import necessary
+          resources and data points used in the authentication process.
+    - To instantiate admin priviledges, we need to create a super user. Do so with ->
+        - "python manage.py createsuperuser". It will then ask for what username, 
+          e-mail, and password you'd like.
+2.2 Django Admin: Easily Visualizing and Creating data
+    - 
