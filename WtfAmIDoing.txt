@@ -91,3 +91,41 @@
             - So instead of "@login_required" it would be "@login_required(login_url='/admin')"
             - By doing this, Django will automatically redirect the session to the login page,
               which is by default setup as the "admin" endpoint or localhost:8000/admin.
+**How Django Interacts with Databases**
+3.1 Introduction to Django ORM
+    - Object Relational Mapping (ORM) System ->
+        - Handles database communications and changes
+        - Write classes that can be transformed using migrations into database tables
+            - Each class (model), is a database table. Each column is a class attribute
+    - How to transform a model
+        - Take a class and create migrations. These migrations contain step by step
+          instructions for what a database must do to apply the changes made in the code
+          - Develop a "Class", Create "migrations", actually "migrate", apply changes in "DB".
+3.2 Creating your First Model
+    - A model should be represented by a unique "app". In this example, I created the 
+      "notes" app by using the command "django-admin startapp notes"
+        - This created the "notes" folder and scaffolded standard files inside it
+        - IMPORTANT: When adding a new app, remember to add the app name to the settings.py 
+          file of the project's main folder (smartnotes)
+    - When defining a class model (inside models.py) remember to make the class inherit 
+      from models.Model -->
+        - "class Notes(models.Model):"
+    - Each attribute in the model can pull from predefined elements inside the model class.
+        - i.e. models.Charfield, models.textField(), etc. See "models.py" in "notes".
+    - CREATING MIGRATIONS 
+        - Once a model is defined, we can tell Django to make a migration instruction
+          set that represents how to translate the model into a database automatically
+        - RUN THE COMMAND: "python manage.py makemigrations"
+            - This automatically searches for models inside the project's apps. If one is
+              found, two things occur -->
+                - 1. A "migrations" folder is created in the models' folder.
+                - 2. Inside "migrations" there is now a file called "0001_initial.py"
+    - MIGRATING NEW MIGRATIONS
+        - Once a migration instruction set is created, it needs to migrated to the database.
+          This way, the database now has a record of all pertinent object names and data types.
+        - RUN THE COMMAND: "python manage.py migrate"
+            - This automatically pushes these any migrations sets that haven't been added
+              yet, to the database. Any subsequent "migrates" with this command should shows
+              "no migrations to appy"
+    
+          
