@@ -127,5 +127,14 @@
             - This automatically pushes these any migrations sets that haven't been added
               yet, to the database. Any subsequent "migrates" with this command should shows
               "no migrations to appy"
+3.3 Using Admin for Data Creation/Manipulation
+    - Admin Console - User's vs. Class models
+        - User entities will automatically show up in the django admin console. Class models
+          must be manually registered.
+    - Registering a model
+        - Navigate to the folder containing your class, there should be a premade admin.py
+          file.
+        - See the comments inside this file to understand the steps taken. Once completed,
+          the "notes" app will show up with its own section in the Djando admin interface
     
           
