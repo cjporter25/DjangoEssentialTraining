@@ -175,6 +175,28 @@
             - "Notes.objects.exclude(text__icontains="Django")
     - Use Case --> Query Using Multiple Filters
         - The user can combine filters to output much more specific sets of data
+    - NOTE: To leave the Django Shell or Python interpreters in general, execute the command "quit()"
+**Building Dynamic Webpages**
+4.1 Creating a Dynamic Template for "Notes"
+    - END GOAL FOR TESTING -->
+        - While running, type in "localhost:8000/smart/notes". This should take you to the
+          page that is described and setup below.
+    - templates/notes (folder)
+        - notes_list.html
+            - This file contains the raw HTML of the webpage you wish to render, as well as any
+              python logic or data elements that were passed in for the function in "views.py"
+    - views.py
+        - In this file, create some function that responds to an http request. 
+        - Return a render object indicating the folder pathway for the html file of the template,
+          as well as any data you wish to pass in.
+    - urls.py
+        - In this file, we need to tell Django that this app has a useable (reachable) url pattern
+        - In other words, we are telling django that there is a URL in which "notes" is the right
+          most keyword. This urlpattern then indicates what function to call to render the 
+          applicable HTML page.
+    - smartnotes (folder)
+        - settings.py
+            - Like similar urls, we need to add this new URL to the list of expected url patterns
 
     
           
