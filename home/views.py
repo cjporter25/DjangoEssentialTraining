@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 # The function "home" receives a request
 def home(request):
-    # Returns an HttpResponse containing the string "Hello World"
-    # return HttpResponse('Hello, world!')
+    # The following returns an HttpResponse containing the string "Hello World"
+        # return HttpResponse('Hello, world!')
     # The more common thing is to use the built in "render" function to 
     #   return a specific html view. The parameter should have the full
     #   necessary folder hierarchy for reference.

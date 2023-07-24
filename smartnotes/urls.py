@@ -22,9 +22,7 @@ from django.urls import path, include
 # from home import views 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    # The below statement is no longer needed as pathway was added to the home DIR directly
-    # path('home', views.home)
-    path('', include('home.urls'))
-    # 
+    path('admin/', admin.site.urls), # --> www.mywebsite.com/admin
+    path('', include('home.urls')), # --> www.mywebsite.com/home
+    path('smart/', include('notes.urls')), # --> www.mywebsite.com/smart/notes
 ]

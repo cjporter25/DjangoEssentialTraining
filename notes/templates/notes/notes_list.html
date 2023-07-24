@@ -1,0 +1,14 @@
+<html>
+    <h1>These are the notes:</h1>
+    <!--The following is an example Django's template logic. Actual python code
+        should be in curly brackets with a "%" sign. Data elements that need to
+        be rendered should be inside double curly brackets -->
+    <ul>
+        <!--For each note object in the list of notes-->
+        {% for note in notes %}
+            <!--Retrieve that note's title, create a new list object with that title-->
+            <li>{{note.title}}</li>
+        <!--Ending the in-line forloop-->
+        {% endfor %}
+    </ul>
+</html>
