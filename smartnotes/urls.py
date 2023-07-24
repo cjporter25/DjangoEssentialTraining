@@ -23,7 +23,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # No longer needed as pathway was added to the home DIR directly
+    # The below statement is no longer needed as pathway was added to the home DIR directly
     # path('home', views.home)
     path('', include('home.urls'))
     # 

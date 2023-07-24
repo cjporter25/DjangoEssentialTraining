@@ -135,6 +135,46 @@
         - Navigate to the folder containing your class, there should be a premade admin.py
           file.
         - See the comments inside this file to understand the steps taken. Once completed,
-          the "notes" app will show up with its own section in the Djando admin interface
+          the "notes" app will show up with its own section in the Djando admin interface.
+3.4 Using the Django Shell for Creating/Querying Data
+    - To launch the Django Shell -->
+        - In the terminal: "python manage.py shell". This will launch something that looks
+          very close to a python interpreter. 
+        - It is different due to its built in coupling to our project
+    - Use Case --> Query Specific Database Objects
+        - Begin by importing the model you wish to look at (type in the shell interpreter):
+            - "from notes.models import Notes"
+        - Next, establish a random variable to hold the queried data:
+            - "mynote = Notes.objects.get(pk='1')"
+                - "Notes.objects" is the main pipeline for accessing data
+                - ".get()" is the function that actually retrieves the data
+                - "pk=1" indicates to get() that the item will have a private key val of 1
+        - Since this variable now hold this object's data, we can access the retrieved model's 
+          attributes through this variable:
+            - "mynote.title" --> Output: 'My first Note'
+            - "mynote.text" --> Output: 'Django is so amazing'
+    - Use Case --> Viewing all applicable objects
+        - Using the interpreter, use the following command -->
+            - "Notes.objects.all()" --> Output: <QuerySet [<Notes: Notes object (1)>]>
+            - This returns a QuerySet which is a list of objects of that model type
+    - Use Case --> Creating a new model object
+        - To create, use a similar command scheme in the interpreter -->
+            - "new_note = Notes.objects.create(title="A second note", text="Might be a second note")
+        - To confirm, use the aformentioned ".all()" command to output a QuerySet. This should now
+          look like --> "<QuerySet [<Notes: Notes object(1)>, <Notes: Notes object (2)>]>
+    - Use Case --> Query with a Filter for Specific Content
+        - Example(1): Filter for the first word of the Note's "Title". Use the following command -->
+            - "Notes.objects.filter(title__startswith="My")
+            - If it exists, the return will be a QuerySet of all objects that fit that filter. If 
+              not, the returning QuerySet will be empty. This is not case sensitive
+        - Example(2): Filter for any text containing the word "Django". Use the following command -->
+            - "Notes.objects.filter(text__icontains="Django")
+            - If it exists, the return will be a QuerySet of all objects that fit that filter. If 
+              not, the returning QuerySet will be empty. This is not case sensitive
+        - Example(3): Filter for any text NOT containing the word "Django". Use the following command -->
+            - "Notes.objects.exclude(text__icontains="Django")
+    - Use Case --> Query Using Multiple Filters
+        - The user can combine filters to output much more specific sets of data
+
     
           
