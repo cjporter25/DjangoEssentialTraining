@@ -197,6 +197,10 @@
     - smartnotes (folder)
         - settings.py
             - Like similar urls, we need to add this new URL to the list of expected url patterns
+4.2 Display Content of a Single Note
+    - See views.py/urls.py for the new additions and notes regarding process
+    - Important nuance: If a user is attempting to access some element of data that does not 
+      exist, the website should return a 404 code.
 
     
           
