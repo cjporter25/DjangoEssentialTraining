@@ -198,9 +198,33 @@
         - settings.py
             - Like similar urls, we need to add this new URL to the list of expected url patterns
 4.2 Display Content of a Single Note
-    - See views.py/urls.py for the new additions and notes regarding process
+    - See views.py/urls.py for the new additions and info regarding process
     - Important nuance: If a user is attempting to access some element of data that does not 
       exist, the website should return a 404 code.
+4.3 Django Class-Based Views
+    - Alternative to a Request/Render Function
+        - In the same views.py file, i.e. the one in the "Home" app, the home 
+          function, that normally returns a render of the target template can
+          be expressed as a "Home" class containing member variables pertaining
+          to the original parameters of the return.
+    - Example: home/views.py
+        - OLD
+        - def home(request):
+            return render(request, 'home/welcome.html', {'today': datetime.today()})
+        - NEW
+        - class HomeView(TemplateView):
+            template_name = 'home/welcome.html'
+            extra_content = {'today': datetime.today()}
+    - Changing Implementation = Changing URL patterns
+        - If the view is now class based, we need to change how the URL patterns 
+          interpret the information, i.e., refer to the class and not a function.
+        - We also need to add the "as_view()" function so that Django knows to
+          look at the class as a template view targeter.
+    - Example: home/urls.py
+        - OLD
+          - path('home', views.home),
+        - NEW
+          - path('home', views.HomeView.as_view()),
 
     
           

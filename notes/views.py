@@ -29,8 +29,9 @@ def detail(request, pk):
     # If the specified object doesn't exist, raise an Http404 error.
     except Notes.DoesNotExist:
         raise Http404("Note doesn't exist")
-        # Return a render of a different template, but pass in the local "note" 
-        #   object created above
+    
+    # If found, return a render of a different template, but pass in the 
+    # local "note" object created above
     return render(request, 'notes/notes_detail.html', {'note': note})
     # NOTE: Because we are passing in another parameter, the urlpattern that points to this 
     #       function will need to account for that.
