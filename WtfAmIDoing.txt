@@ -224,7 +224,38 @@
         - OLD
           - path('home', views.home),
         - NEW
-          - path('home', views.HomeView.as_view()),
+          - path('home', views.HomeView.as_view())
+4.4 More Class Based View Stuff
+    - Similar to the changes in home, we can create a class based view in the notes app
+    - Example: notes/views.py (Generate a list)
+        - OLD
+        - def list(request):
+              all_notes = Notes.objects.all()
+              return render(request, 'notes/notes_list.html', {'notes': all_notes})
+        - NEW
+        - class NotesListView(ListView):
+              model = Notes
+              context_object_name = "notes"
+              template_name = "notes/notes_list.html"
+    - Change the URL pattern in notes/urls.py
+        - OLD 
+          - path('notes', views.list),
+        - NEW
+          - path('notes', views.NotesListView.as_view()), 
+    - Example: notes/views.py (Generate object details)
+        - OLD
+        - def detail(request, pk):
+              try:
+                  note = Notes.objects.get(pk=pk)
+              except Notes.DoesNotExist:
+                  raise Http404("Note doesn't exist")
+              return render(request, 'notes/notes_detail.html', {'note': note})
+        - NEW
+        - class NotesDetailView(DetailView):
+              model = Notes
+              context_object_name = "note"
+    - Change the URL pattern in notes/urls.py
+
 
     
           
