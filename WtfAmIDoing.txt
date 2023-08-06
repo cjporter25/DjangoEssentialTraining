@@ -256,6 +256,84 @@
               context_object_name = "note"
     - Change the URL pattern in notes/urls.py
 
+## Building a Robust Front End in Django ##
+
+5.1 Static Files in Django
+    - It is common practice to create a dedicated directory that contains all the
+      static files for a webpage to refer to and use.
+    - Django as a way of interpreting a "static" directory -->
+        - In the main folders "settings.py" insert the statement:
+            STATICFILES_DIRS = [
+                BASE_DIR / 'static',
+            ]
+        - The string following "BASE_DIR" is the name of the directoy you intend to 
+          include.
+    - CSS Folders/Files
+        - Any globally referenced style sheets can be added to the static folder now
+          that Django is properly referencing them.
+        - After creating a CSS file, and adding some basic style elements, we need to
+          add a reference to this style sheet in some HTML page to see its effects.
+        - Example: notes_list.html
+            - At the top, tell Django to load in static files -->
+                - {% load static %}
+            - In a header tag, establish a reference to the stylesheet you intend to 
+              use -->
+                - <head>
+                    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" />
+                  </head>
+            - Create a Basic Style with Designated Class
+                - In CSS, you can create a set of styles and have it point to a user
+                  created "class". In the CSS file, "style.css" -->
+                      - .note-li {
+                            color: red;
+                        }
+                - Once that's done, add this class to whatever object in the HTML file
+                  that needs that style set. In the notes_list.html file -->
+                      - OLD
+                          - <li>{{note.title}}</li>
+                      - NEW
+                          - <li class="note-li">{{note.title}}</li>
+5.2 How to set up a base HTML for every Django Template
+    - Similarly to the globally available CSS files, we can create a base html file 
+      to use.
+    - In the "static" directory, I created a "template" folder containing the file
+      "base.html"
+        - Important Elements 
+            - Loading and referencing static style sheets is done exactly like shown
+              in the above section.
+            - Since we now have these aspects in the "base.html" file, we can use 
+              another Django tool to have view specific html files use this "base"
+              file instead of loading static files everytime.
+                - Example: notes_list.html
+                    - At the top, we use the statement: {% extends "base.html" %}
+            - Now, another tool in Django is to implement "injection" such that an 
+              area can be specifically designated to be "open" to whatever HTML code
+              we want to put in it.
+                - Example: base.html & notes_list.html
+                    - In base, a body element was added containing the following -->
+                        <body>
+                            {% block content %}
+        
+                            {% endblock %}
+                        </body>
+                    - In notes_list.html, we must encase the code we want injected into
+                      the base file using the same tool -->
+                        {% block content %}
+                            <h1>These are the notes!:</h1>
+   
+                            <ul>
+                                {% for note in notes %}
+                                    <li class="note-li">{{note.title}}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endblock %}
+5.3 Adding Robust Styling
+    - 
+
+
+    
+        
+
 
     
           

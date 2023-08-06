@@ -1,4 +1,20 @@
-<html>
+<!--Statement used to have a base html page control the main elements-->
+{% extends "base.html" %}
+
+
+
+
+<!--Built in Django tool to load in static elements, such as style sheets
+{% load static %}
+-->
+<!--<html>-->
+    <!--Although we loaded it above, we need to add an explicit linkage 
+        in the header of the webpage 
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" />
+    </head>
+    -->
+{% block content %}
     <h1>These are the notes!:</h1>
     <!--The following is an example Django's template logic. Actual python code
         should be in curly brackets with a "%" sign. Data elements that need to
@@ -7,11 +23,14 @@
         <!--For each note object in the list of notes-->
         {% for note in notes %}
             <!--Retrieve that note's title, create a new list object with that title-->
-            <li>{{note.title}}</li>
+            <li class="note-li">{{note.title}}</li>
         <!--Ending the in-line forloop-->
         {% endfor %}
     </ul>
-</html>
+{% endblock %}
+
+<!--</html>-->
+
 
 <!--LOOK AT THIS YOU IDIOT. Testing Idea: You can use this logic strategy to confirm
     squad result data is properly thrown into an html page, i.e. each line is a new data
