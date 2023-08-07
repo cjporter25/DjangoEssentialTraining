@@ -9,10 +9,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 # Class - "HomeView"
 # Inherits From = "TemplateView"
 class HomeView(TemplateView):
-    # Target Template
-    template_name = 'home/welcome.html'
+    
     # Extra data to import into the template view
     extra_content = {'today': datetime.today()}
+    # Target Template
+    template_name = 'home/welcome.html'
 
 # NOTE: NO LONGER NEEDED GIVEN ABOVE CLASS IMPLEMENTATION
 # def home(request):

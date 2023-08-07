@@ -1,9 +1,6 @@
 <!--Statement used to have a base html page control the main elements-->
 {% extends "base.html" %}
 
-
-
-
 <!--Built in Django tool to load in static elements, such as style sheets
 {% load static %}
 -->
@@ -14,20 +11,32 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}" />
     </head>
     -->
+
+
 {% block content %}
-    <h1>These are the notes!:</h1>
+    <h1 class="my-5">These are the notes!:</h1>
     <!--The following is an example Django's template logic. Actual python code
         should be in curly brackets with a "%" sign. Data elements that need to
         be rendered should be inside double curly brackets -->
-    <ul>
+    <div class="row row-col3 g-2">
         <!--For each note object in the list of notes-->
         {% for note in notes %}
-            <!--Retrieve that note's title, create a new list object with that title-->
-            <li class="note-li">{{note.title}}</li>
+        <div class="col">
+            <div class="p-3 border">
+                <!--Retrieve that note's title, create a new list object with that title-->
+                <a href="{%url 'notes.detail' pk=note.id %}" class="text-dark text-decoration-non">
+                    <h3>{{note.title}}</h3>
+                </a>
+                {{note.text|truncatechars:10}}
+            </div>
+        </div>
         <!--Ending the in-line forloop-->
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}
+
+
+
 
 <!--</html>-->
 

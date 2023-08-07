@@ -1,9 +1,17 @@
 <!-- Django does not use pure HTML, but instead, a backend framework
      for defining templates called "Django Template Language" or DTL -->
-<html>
-    <header><title>SmartNotes!</title></header>
 
-    <body><h1>Welcome to Smartnotes!</h1>
-    <p>Today is {{today}}</p>
-    </body>
-</html>
+<!--Statement used to have a base html page control the main elements-->
+{% extends "base.html" %}
+
+<!--<html>-->
+{% block content %}
+        <h1>Welcome to Smartnotes!</h1>
+        <p>Today is {{today}}</p>
+        <!--Default button to redirect the user to a different url. In this case
+            the user is directed to our list of notes-->
+        <a href="{% url 'notes.list' %}" class="btn btn-primary"> 
+            Check out these SmartNotes!
+        </a>
+{% endblock %}
+<!--</html>-->
